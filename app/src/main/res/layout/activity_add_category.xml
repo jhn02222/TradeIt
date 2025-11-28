@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#6200EE"
+        android:elevation="4dp"
+        android:padding="16dp"
+        android:paddingTop="24dp"
+        android:gravity="center_vertical">
+
+        <!-- Back Button -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#FFFFFF"
+            android:contentDescription="Back"/>
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add New Category"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <!-- Content Area -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Icon Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginBottom="32dp">
+
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circle_background"
+                    android:elevation="2dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📁"
+                    android:textSize="40sp"
+                    android:layout_marginTop="-60dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Create a new category"
+                    android:textSize="14sp"
+                    android:textColor="#757575"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Input Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CATEGORY DETAILS"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#6200EE"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Category Name Input -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Category Name"
+                        app:boxStrokeColor="#6200EE"
+                        app:hintTextColor="#6200EE"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/categoryNameEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/black"
+                            android:padding="16dp"
+                            android:maxLines="1"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Helper Text -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Choose a unique name for your category"
+                        android:textSize="12sp"
+                        android:textColor="#9E9E9E"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="4dp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Spacer to push button to bottom -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:minHeight="40dp"/>
+
+            <!-- Save Button -->
+            <Button
+                android:id="@+id/saveCategoryButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Save Category"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_background"
+                android:elevation="4dp"
+                android:stateListAnimator="@null"
+                android:letterSpacing="0.05"/>
+
+            <!-- Cancel Button -->
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Cancel"
+                android:textSize="16sp"
+                android:textColor="#6200EE"
+                android:background="?attr/selectableItemBackground"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

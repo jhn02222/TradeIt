@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <!-- 🔹 Custom Purple Header -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#6200EE"
+        android:elevation="4dp"
+        android:padding="16dp">
+
+        <!-- Header content -->
+        <LinearLayout
+            android:id="@+id/headerContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="24dp">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/headerTitleTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Transaction Details"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <!-- Return button (go back to previous page) -->
+            <Button
+                android:id="@+id/returnButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Return"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 🔹 Scrollable Transaction Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:orientation="vertical">
+
+            <!-- Item Name -->
+            <TextView
+                android:id="@+id/itemNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Item: Mountain Bike"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Category -->
+            <TextView
+                android:id="@+id/categoryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category: Transportation"
+                android:textSize="16sp"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Price -->
+            <TextView
+                android:id="@+id/priceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price: $150.00"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_dark"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Seller Info -->
+            <TextView
+                android:id="@+id/sellerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seller: John Doe"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Buyer Info -->
+            <TextView
+                android:id="@+id/buyerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buyer: Jane Smith"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Transaction Date -->
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date: Nov 26, 2025"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Status -->
+            <TextView
+                android:id="@+id/statusTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status: PENDING"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_orange_dark"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Confirmation Status -->
+            <TextView
+                android:id="@+id/confirmationStatusTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirmations:\nSeller: Pending\nBuyer: Pending"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:lineSpacingExtra="4dp"
+                android:layout_marginBottom="24dp"
+                android:visibility="gone"/>
+
+            <!-- Confirm Button -->
+            <Button
+                android:id="@+id/confirmButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Confirm Transaction"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

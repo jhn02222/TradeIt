@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/transactionItemNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item Name"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/transactionPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$50.00"
+        android:textSize="16sp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/transactionOtherPartyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seller: John Doe"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/transactionDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11/26/2025"
+        android:textSize="12sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/transactionStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="✓ Confirmed"
+        android:textSize="12sp"
+        android:textColor="@android:color/holo_green_dark"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"/>
+
+</LinearLayout>

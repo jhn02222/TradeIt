@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TradeIt</string>
+    <string name="register_title">Register for TradeIt</string>
+    <string name="login_title">TradeIt Login</string>
+    <string name="categories">Categories</string>
+    <string name="my_items">My Items</string>
+    <string name="transactions">Transactions</string>
+    <string name="logout">Logout</string>
+</resources>

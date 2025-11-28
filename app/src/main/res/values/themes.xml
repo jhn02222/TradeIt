@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.TradeIt" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- keep other colors -->
+    </style>
+
+</resources>

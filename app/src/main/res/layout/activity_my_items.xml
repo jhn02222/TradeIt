@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- Top Bar with Title + Return Button -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:padding="16dp">
+
+        <!-- Content wrapper to push text down and leave color strip above -->
+        <LinearLayout
+            android:id="@+id/headerContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="24dp">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="My Items"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Return Button -->
+            <Button
+                android:id="@+id/returnButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Return"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Empty State (shown when user has no items) -->
+    <LinearLayout
+        android:id="@+id/emptyStateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="😶"
+            android:textSize="48sp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You don't have any items yet."
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#424242"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add an item to start trading!"
+            android:textSize="14sp"
+            android:textColor="#757575"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- List of My Items -->
+    <ListView
+        android:id="@+id/myItemsListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="#E0E0E0"
+        android:dividerHeight="1dp"
+        android:padding="8dp" />
+
+</LinearLayout>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- Top Bar with Title + Return Button -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#6200EE"
+        android:elevation="4dp"
+        android:padding="16dp">
+
+        <!-- Content wrapper to push text down -->
+        <LinearLayout
+            android:id="@+id/headerContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="24dp">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Activity"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <!-- Return Button -->
+            <Button
+                android:id="@+id/returnButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Return"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Main content with tabs -->
+    <TabHost
+        android:id="@+id/tabHost"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- Tab content ABOVE, fills space -->
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF">
+
+                <!-- Tab 1: Pending Buys Container -->
+                <FrameLayout
+                    android:id="@+id/pendingBuysContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ListView
+                        android:id="@+id/pendingBuysListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF"
+                        android:divider="#CCCCCC"
+                        android:dividerHeight="1dp" />
+
+                    <!-- Empty view for Pending Buys -->
+                    <LinearLayout
+                        android:id="@+id/pendingBuysEmptyView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="32dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🛒"
+                            android:textSize="40sp"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No pending buys"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#424242"
+                            android:layout_marginBottom="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="You don't have any items you're waiting to receive."
+                            android:textSize="14sp"
+                            android:textColor="#757575"
+                            android:gravity="center" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!-- Tab 2: Pending Sales Container -->
+                <FrameLayout
+                    android:id="@+id/pendingSalesContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ListView
+                        android:id="@+id/pendingSalesListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF"
+                        android:divider="#CCCCCC"
+                        android:dividerHeight="1dp" />
+
+                    <!-- Empty view for Pending Sales -->
+                    <LinearLayout
+                        android:id="@+id/pendingSalesEmptyView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="32dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📦"
+                            android:textSize="40sp"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No pending sales"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#424242"
+                            android:layout_marginBottom="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="You don't have any items currently being traded."
+                            android:textSize="14sp"
+                            android:textColor="#757575"
+                            android:gravity="center" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!-- Tab 3: Completed Container -->
+                <FrameLayout
+                    android:id="@+id/completedContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ListView
+                        android:id="@+id/completedListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF"
+                        android:divider="#CCCCCC"
+                        android:dividerHeight="1dp" />
+
+                    <!-- Empty view for Completed -->
+                    <LinearLayout
+                        android:id="@+id/completedEmptyView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="32dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✅"
+                            android:textSize="40sp"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No completed trades yet"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#424242"
+                            android:layout_marginBottom="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Once you finish a trade, it'll show up here."
+                            android:textSize="14sp"
+                            android:textColor="#757575"
+                            android:gravity="center" />
+                    </LinearLayout>
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <!-- Tabs at the BOTTOM -->
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#6200EE"
+                android:elevation="2dp"
+                android:paddingBottom="10dp"/>
+        </LinearLayout>
+    </TabHost>
+</LinearLayout>

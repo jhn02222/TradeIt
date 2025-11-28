@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Top Bar (custom header with back button) -->
+        <LinearLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#6200EE"
+            android:elevation="4dp"
+            android:padding="16dp">
+
+            <!-- NEW: Content wrapper that sits LOWER -->
+            <LinearLayout
+                android:id="@+id/headerContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="28dp">   <!-- 👈 THIS pushes title down -->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Category Title -->
+                    <TextView
+                        android:id="@+id/titleTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Electronics"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF" />
+
+                    <!-- Subtitle / item count -->
+                    <TextView
+                        android:id="@+id/subtitleTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="0 items available"
+                        android:textSize="14sp"
+                        android:textColor="#E0E0E0" />
+                </LinearLayout>
+
+                <!-- Back Button -->
+                <Button
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Back"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!-- Empty State -->
+        <LinearLayout
+            android:id="@+id/emptyStateLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="32dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📦"
+                android:textSize="64sp"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Items Yet"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#424242"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap the + button below to add your first item"
+                android:textSize="14sp"
+                android:textColor="#757575"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- Items List -->
+        <ListView
+            android:id="@+id/itemsListView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="#E0E0E0"
+            android:dividerHeight="1dp"
+            android:padding="8dp"
+            android:clipToPadding="false"
+            android:scrollbarStyle="outsideOverlay"
+            android:paddingBottom="80dp"/>
+    </LinearLayout>
+
+    <!-- Floating Action Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addItemFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        android:src="@android:drawable/ic_input_add"
+        android:contentDescription="Add Item"
+        app:tint="@android:color/white"
+        app:backgroundTint="#6200EE"
+        app:elevation="6dp"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        app:rippleColor="#FFFFFF"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

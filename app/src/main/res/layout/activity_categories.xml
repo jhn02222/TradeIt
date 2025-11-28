@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- Top Bar with Title and Add Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#6200EE"
+        android:elevation="4dp"
+        android:padding="16dp">
+
+        <!-- Content wrapper to push title down, leaving purple space above -->
+        <LinearLayout
+            android:id="@+id/headerContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="24dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TradeIt"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
+
+            <!-- Subtitle and Add Button Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Browse categories"
+                    android:textSize="14sp"
+                    android:textColor="#E0E0E0"/>
+
+                <Button
+                    android:id="@+id/addButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="+ Add"
+                    android:textColor="#FFFFFF"
+                    android:background="#FFFFFF"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Categories List -->
+    <ListView
+        android:id="@+id/categoriesListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#F5F5F5"
+        android:divider="#00000000"
+        android:dividerHeight="0dp"
+        android:padding="8dp"
+        android:clipToPadding="false"/>
+
+    <!-- Bottom Navigation Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <Button
+            android:id="@+id/btnMyItems"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="My Items"
+            android:textColor="#6200EE"
+            android:background="?attr/selectableItemBackground"
+            android:drawableTop="@android:drawable/ic_menu_my_calendar"
+            android:drawableTint="#6200EE"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnTransactions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Activity"
+            android:textColor="#6200EE"
+            android:background="?attr/selectableItemBackground"
+            android:drawableTop="@android:drawable/ic_menu_recent_history"
+            android:drawableTint="#6200EE"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Logout"
+            android:textColor="#6200EE"
+            android:background="?attr/selectableItemBackground"
+            android:drawableTop="@android:drawable/ic_menu_close_clear_cancel"
+            android:drawableTint="#6200EE"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
+    </LinearLayout>
+
+</LinearLayout>
