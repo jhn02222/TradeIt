@@ -180,6 +180,7 @@ public class CategoriesActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                if (mAuth.getCurrentUser() == null) return;
                 Log.e(TAG, "Failed to load categories", databaseError.toException());
                 Toast.makeText(CategoriesActivity.this,
                         "Failed to load categories",

@@ -40,7 +40,7 @@
                 android:id="@+id/returnButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Return"
+                android:text="Back"
                 android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
