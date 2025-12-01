@@ -96,6 +96,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
+                        if (mAuth.getCurrentUser() == null) return;
                         Log.e(TAG, "Failed to load transaction", databaseError.toException());
                         Toast.makeText(TransactionDetailActivity.this,
                                 "Failed to load transaction details",

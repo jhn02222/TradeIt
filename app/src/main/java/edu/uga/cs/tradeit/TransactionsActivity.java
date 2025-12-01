@@ -200,6 +200,7 @@ public class TransactionsActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                if (mAuth.getCurrentUser() == null) return;
                 Log.e(TAG, "Failed to load transactions", databaseError.toException());
                 Toast.makeText(TransactionsActivity.this,
                         "Failed to load transactions",
