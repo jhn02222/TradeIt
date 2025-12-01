@@ -189,6 +189,7 @@ public class ItemsActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                if (mAuth.getCurrentUser() == null) return;
                 Log.e(TAG, "Failed to load items", databaseError.toException());
                 Toast.makeText(ItemsActivity.this,
                         "Failed to load items",
