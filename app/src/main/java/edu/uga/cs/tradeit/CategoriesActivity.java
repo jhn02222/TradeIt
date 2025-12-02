@@ -43,10 +43,8 @@ public class CategoriesActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private String currentUserId;
-
     private List<Category> categoriesList;
-    private ArrayAdapter<String> adapter;
-    private List<String> categoryNames;
+    private CategoriesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,10 +74,9 @@ public class CategoriesActivity extends AppCompatActivity {
         btnLogout = findViewById(R.id.btnLogout);
 
         categoriesList = new ArrayList<>();
-        categoryNames = new ArrayList<>();
-        adapter = new ArrayAdapter<>(this, R.layout.category_list_item,
-                R.id.categoryNameTextView, categoryNames);
+        adapter = new CategoriesAdapter(this, categoriesList);
         categoriesListView.setAdapter(adapter);
+
 
         loadCategories();
 
@@ -155,7 +152,7 @@ public class CategoriesActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 categoriesList.clear();
-                categoryNames.clear();
+                // Remove: categoryNames.clear();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Category category = snapshot.getValue(Category.class);
@@ -170,10 +167,6 @@ public class CategoriesActivity extends AppCompatActivity {
                         return c1.getName().compareToIgnoreCase(c2.getName());
                     }
                 });
-
-                for (Category category : categoriesList) {
-                    categoryNames.add(category.getName());
-                }
 
                 adapter.notifyDataSetChanged();
             }
@@ -213,12 +206,25 @@ public class CategoriesActivity extends AppCompatActivity {
     }
 
     private void editCategory(Category category) {
-        // Remove the empty check - allow editing category name regardless of items
-        Intent intent = new Intent(CategoriesActivity.this, AddCategoryActivity.class);
-        intent.putExtra("categoryId", category.getCategoryId());
-        intent.putExtra("categoryName", category.getName());
-        intent.putExtra("isEdit", true);
-        startActivity(intent);
+        // Check if category is empty before allowing edit
+        checkIfCategoryEmpty(category.getCategoryId(), new CategoryEmptyCallback() {
+            @Override
+            public void onResult(boolean isEmpty) {
+                if (isEmpty) {
+                    // Category is empty, allow editing
+                    Intent intent = new Intent(CategoriesActivity.this, AddCategoryActivity.class);
+                    intent.putExtra("categoryId", category.getCategoryId());
+                    intent.putExtra("categoryName", category.getName());
+                    intent.putExtra("isEdit", true);
+                    startActivity(intent);
+                } else {
+                    // Category has items, prevent editing
+                    Toast.makeText(CategoriesActivity.this,
+                            "Cannot edit category with items in it",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void deleteCategory(Category category) {
@@ -268,7 +274,19 @@ public class CategoriesActivity extends AppCompatActivity {
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                callback.onResult(!dataSnapshot.exists());
+                boolean hasAvailableItems = false;
+
+                // Check if there are any AVAILABLE items in this category
+                for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
+                    Item item = itemSnapshot.getValue(Item.class);
+                    if (item != null && "available".equals(item.getStatus())) {
+                        hasAvailableItems = true;
+                        break;
+                    }
+                }
+
+                // Category is "empty" if it has no available items
+                callback.onResult(!hasAvailableItems);
             }
 
             @Override

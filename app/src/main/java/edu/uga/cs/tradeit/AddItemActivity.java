@@ -184,9 +184,17 @@ public class AddItemActivity extends AppCompatActivity {
 
         if (isEdit) {
             // Update existing item (User Story 9)
+            // Update all fields EXCEPT postedAt to preserve original creation time
             mDatabase.child("items").child(itemId).child("name").setValue(itemName);
             mDatabase.child("items").child(itemId).child("description").setValue(itemDescription);
             mDatabase.child("items").child(itemId).child("price").setValue(price);
+            mDatabase.child("items").child(itemId).child("free").setValue(isFree);
+
+            // CRITICAL: Preserve original posted time
+            if (originalPostedAt > 0) {
+                mDatabase.child("items").child(itemId).child("postedAt").setValue(originalPostedAt);
+            }
+
             mDatabase.child("items").child(itemId).child("free").setValue(isFree)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
@@ -215,7 +223,7 @@ public class AddItemActivity extends AppCompatActivity {
                         isFree,
                         currentUserId,
                         currentUserName,
-                        System.currentTimeMillis(),
+                        System.currentTimeMillis(), // ⭐ New items get current timestamp
                         "available"
                 );
 

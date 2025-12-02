@@ -118,9 +118,12 @@ public class TransactionDetailActivity extends AppCompatActivity {
         sellerTextView.setText("Seller: " + transaction.getSellerName());
         buyerTextView.setText("Buyer: " + transaction.getBuyerName());
 
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm", Locale.US);
+        // 12-hour time format with AM/PM
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy 'at' h:mm a", Locale.US);
+
+        // Always show when transaction was created (Pending on:)
         String dateStr = sdf.format(new Date(transaction.getCreatedAt()));
-        dateTextView.setText("Date: " + dateStr);
+        dateTextView.setText("Pending on: " + dateStr);
 
         statusTextView.setText("Status: " + transaction.getStatus().toUpperCase());
 
@@ -143,6 +146,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
                 confirmButton.setVisibility(View.GONE);
             }
         } else if ("completed".equals(transaction.getStatus())) {
+            // Show completed date separately
             String completedDate = sdf.format(new Date(transaction.getCompletedAt()));
             confirmationStatusTextView.setText("Completed on: " + completedDate);
             confirmationStatusTextView.setVisibility(View.VISIBLE);

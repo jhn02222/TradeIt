@@ -48,8 +48,10 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
                 priceTextView.setText("FREE");
             }
 
-            SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy", Locale.US);
+            // 12-hour time format with AM/PM
+            SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy 'at' h:mm a", Locale.US);
             long displayTime = transaction.getCreatedAt();
+            String datePrefix = "Pending on: ";
 
             if ("buyer".equals(viewType)) {
                 otherPartyTextView.setText("Seller: " + transaction.getSellerName());
@@ -58,6 +60,8 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
             } else if ("completed".equals(viewType)) {
                 displayTime = transaction.getCompletedAt() > 0 ?
                         transaction.getCompletedAt() : transaction.getCreatedAt();
+                datePrefix = "Completed on: ";
+
                 // Show role in completed view
                 String role = transaction.getBuyerId().equals(
                         com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -69,7 +73,7 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
             }
 
             String dateStr = sdf.format(new Date(displayTime));
-            dateTextView.setText(dateStr);
+            dateTextView.setText(datePrefix + dateStr);
 
             if ("pending".equals(transaction.getStatus())) {
                 String confirmStatus = "";

@@ -173,7 +173,7 @@ public class AddCategoryActivity extends AppCompatActivity {
                     .setValue(categoryName)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            // Update timestamp
+                            // ✅ This updates the timestamp!
                             mDatabase.child("categories").child(categoryId)
                                     .child("createdAt").setValue(System.currentTimeMillis());
 
